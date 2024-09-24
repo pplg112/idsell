@@ -1,0 +1,335 @@
+/* ตั้งค่าพื้นฐาน */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa; /* สีพื้นหลังที่เย็นสบาย */
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease; /* เอฟเฟกต์การเปลี่ยนสีพื้นหลัง */
+}
+
+h1, h2 {
+    color: #00796b; /* สีตัวอักษรที่สดใส */
+    text-align: center;
+}
+
+header {
+    background-color: #0097a7;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+nav {
+    background-color: #004d40; /* สีพื้นหลังของ navigation */
+    padding: 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff; /* สีตัวอักษรใน navigation */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease; /* เอฟเฟกต์การเปลี่ยนสีเมื่อ hover */
+}
+
+nav ul li a:hover {
+    color: #a7ffeb; /* สีเมื่อ hover */
+}
+
+.main-content {
+    text-align: center;
+    padding: 50px;
+}
+
+.main-content h2 {
+    font-size: 2.2em;
+    color: #006064;
+}
+
+.main-content p {
+    font-size: 1.2em;
+    color: #004d40;
+}
+
+.cta-button {
+    background-color: #00838f;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.signup-login {
+    background-color: #b2ebf2;
+    padding: 50px;
+    text-align: center;
+}
+
+.signup-login h3 {
+    font-size: 1.8em;
+    color: #004d40;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form h4 {
+    font-size: 1.5em;
+    color: #00796b;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0097a7;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #0097a7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #004d40; /* สีพื้นหลังของ footer */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+/* ตั้งค่าหน้าสมัครสมาชิก */
+.signup-section {
+    background-color: #e0f7fa;
+    padding: 50px;
+    text-align: center;
+}
+
+.signup-section h2 {
+    font-size: 2em;
+    color: #006064;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #00796b;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0097a7;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #0097a7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 5px;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #00796b;
+}
+/* ตั้งค่าหน้าล็อกอิน */
+.login-section {
+    background-color: #e0f7fa;
+    padding: 50px;
+    text-align: center;
+}
+
+.login-section h2 {
+    font-size: 2em;
+    color: #006064;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #00796b;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0097a7;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #0097a7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 5px;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #00796b;
+}
+/* ไอคอนโปรไฟล์และปุ่มออกจากระบบ */
+#profile-link img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#profile-link span {
+    font-size: 1.1em;
+    color: #00796b;
+}
+
+#logout-nav a {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+#logout-nav a:hover {
+    color: #b71c1c;
+}
+/* สไตล์สำหรับยอดเงินและลิงก์เติมเงิน */
+#balance-nav {
+    color: #00796b;
+    font-weight: bold;
+}
+
+#recharge-nav a {
+    color: #1976d2;
+    font-weight: bold;
+}
+
+#recharge-nav a:hover {
+    color: #0d47a1;
+}
+/* สไตล์สำหรับป๊อปอัพ */
+.modal {
+    display: none; /* ซ่อนป๊อปอัพเริ่มต้น */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* สีกึ่งโปร่งแสง */
+    opacity: 0; /* เริ่มต้นโปร่งใส */
+    transition: opacity 0.5s ease; /* เอฟเฟกต์การเปลี่ยนแปลงความโปร่งใส */
+}
+
+/* แสดงป๊อปอัพ */
+.modal.show {
+    display: block; /* แสดงเมื่อเรียกใช้ */
+    opacity: 1; /* ความโปร่งใสเต็มที่ */
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* กำหนดความกว้างของป๊อปอัพ */
+    transform: translateY(-30px); /* เริ่มต้นจากด้านบน */
+    transition: transform 0.5s ease; /* เอฟเฟกต์การเปลี่ยนแปลง */
+}
+
+/* แสดงเนื้อหาเมื่อป๊อปอัพแสดง */
+.modal.show .modal-content {
+    transform: translateY(0); /* ย้ายกลับไปที่ตำแหน่งเดิม */
+}
+
+/* สไตล์สำหรับ close button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #00796b; /* สีพื้นหลังของปุ่ม */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* มุมปุ่มที่มน */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* เอฟเฟกต์การเปลี่ยนสีและขนาด */
+}
+
+button:hover {
+    background-color: #004d40; /* สีเมื่อ hover */
+    transform: scale(1.05); /* ขยายขนาดเมื่อ hover */
+}

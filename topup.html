@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>เติมเงิน - เว็บขายไอดีเกม Roblox</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="topup.html">เติมเงิน</a></li>
+            <li><a href="profile.html">โปรไฟล์</a></li>
+            <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
+            <li><a href="logout.html">ออกจากระบบ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>เติมเงิน</h1>
+        <form id="topup-form">
+            <label for="amount">จำนวนเงินที่ต้องการเติม:</label>
+            <input type="number" id="amount" placeholder="กรอกจำนวนเงิน" required>
+
+            <h2>เลือกวิธีการชำระเงิน</h2>
+            <div>
+                <input type="radio" id="paypal" name="payment-method" value="paypal" checked>
+                <label for="paypal">PayPal</label>
+            </div>
+            <div>
+                <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+                <label for="credit-card">บัตรเครดิต</label>
+            </div>
+            <button type="submit">เติมเงิน</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <!-- ป๊อปอัพติดต่อทีมงาน -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>ติดต่อทีมงาน</h2>
+            <form id="contact-form">
+                <label for="user-name">ชื่อ:</label>
+                <input type="text" id="user-name" required>
+                <label for="user-email">อีเมล:</label>
+                <input type="email" id="user-email" required>
+                <label for="user-message">ข้อความ:</label>
+                <textarea id="user-message" required></textarea>
+                <button type="submit">ส่งข้อความ</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // จัดการการเปิดป๊อปอัพ
+        const contactModal = document.getElementById('contact-modal');
+        const contactButton = document.getElementById('contact-support');
+        const closeModal = document.getElementById('close-modal');
+
+        contactButton.addEventListener('click', function() {
+            contactModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', function() {
+            contactModal.style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+        };
+
+        // ฟังก์ชันส่งฟอร์มเติมเงิน
+        document.getElementById('topup-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+            const amount = document.getElementById('amount').value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+            // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อประมวลผลการเติมเงินจริง
+            document.getElementById('message').innerText = `เติมเงิน ${amount} บาท ผ่าน ${paymentMethod} สำเร็จ!`;
+        });
+    </script>
+    <script src="cost.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnowyRobloxStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SnowyRobloxStore</h1>
+        <nav>
+            <ul id="nav-items">
+                <li><a href="index.html">หน้าหลัก</a></li>
+                <li id="register-nav"><a href="register.html">สมัครสมาชิก</a></li>
+                <li id="login-nav"><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li id="profile-nav" style="display:none;">
+                    <a href="#" id="profile-link">
+                        <img id="profile-icon" src="default-profile.png" alt="โปรไฟล์" width="30" height="30">
+                        <span id="username-display"></span>
+                    </a>
+                    <input type="file" id="profile-pic-input" accept="image/*" style="display:none;">
+                </li>
+                <li id="logout-nav" style="display:none;"><a href="#" id="logout-link">ออกจากระบบ</a></li>
+                <li id="balance-nav" style="display:none;">เงินคงเหลือ: <span id="balance-display">0</span> Robux</li>
+                <li id="recharge-nav" style="display:none;"><a href="topup.html" id="recharge-link">เติมเงิน</a></li>
+                <li id="category-nav" style="display:none;"><a href="category.html">หมวดหมู่ไอดีเกม</a></li>
+                <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>ยินดีต้อนรับสู่ SnowyRobloxStore</h2>
+        <p>เว็บขายไอดีเกม Roblox ที่ดีที่สุด!</p>
+    </section>
+
+    <!-- ป๊อปอัพสำหรับติดต่อทีมงาน -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>ติดต่อทีมงาน</h2>
+            <form id="contact-form">
+                <label for="user-name">ชื่อ:</label>
+                <input type="text" id="user-name" required>
+                
+                <label for="user-email">อีเมล:</label>
+                <input type="email" id="user-email" required>
+
+                <label for="user-message">ข้อความ:</label>
+                <textarea id="user-message" rows="5" required></textarea>
+
+                <button type="submit">ส่งข้อความ</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 SnowyRobloxStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ตรวจสอบสถานะการล็อกอิน
+        const storedUserData = JSON.parse(localStorage.getItem('registeredUser'));
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        if (loggedInUser && storedUserData && loggedInUser.username === storedUserData.username) {
+            document.getElementById('register-nav').style.display = 'none';
+            document.getElementById('login-nav').style.display = 'none';
+            document.getElementById('profile-nav').style.display = 'inline';
+            document.getElementById('logout-nav').style.display = 'inline';
+            document.getElementById('balance-nav').style.display = 'inline';
+            document.getElementById('recharge-nav').style.display = 'inline';
+            document.getElementById('category-nav').style.display = 'inline';
+            document.getElementById('username-display').textContent = loggedInUser.username;
+
+            // ฟังก์ชันสำหรับออกจากระบบ
+            document.getElementById('logout-link').addEventListener('click', function() {
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('balance'); // ลบข้อมูลยอดเงินเมื่อออกจากระบบ
+                alert('ออกจากระบบสำเร็จ');
+                window.location.href = 'index.html';
+            });
+
+            // ฟังก์ชันเพื่อเปลี่ยนรูปโปรไฟล์
+            document.getElementById('profile-link').addEventListener('click', function() {
+                document.getElementById('profile-pic-input').click();
+            });
+
+            document.getElementById('profile-pic-input').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profile-icon').src = e.target.result;
+                        localStorage.setItem('profilePicture', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // โหลดรูปโปรไฟล์จาก Local Storage (ถ้ามี)
+            const storedProfilePic = localStorage.getItem('profilePicture');
+            if (storedProfilePic) {
+                document.getElementById('profile-icon').src = storedProfilePic;
+            }
+
+            // แสดงจำนวนเงินที่เหลือ
+            const storedBalance = localStorage.getItem('balance') || '0';
+            document.getElementById('balance-display').textContent = storedBalance;
+        }
+
+        // ฟังก์ชันป๊อปอัพติดต่อทีมงาน
+        const contactModal = document.getElementById('contact-modal');
+        const contactButton = document.getElementById('contact-support');
+        const closeModal = document.getElementById('close-modal');
+
+        contactButton.addEventListener('click', function() {
+            contactModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', function() {
+            contactModal.style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target === contactModal) {
+                contactModal.style.display = 'none';
+            }
+        };
+
+        // ฟังก์ชันส่งข้อความ
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const message = document.getElementById('user-message').value;
+
+            // ที่นี่คุณสามารถเพิ่มโค้ดเพื่อส่งข้อมูลไปยังเซิร์ฟเวอร์หรือจัดการข้อความ
+            alert(`ข้อความของคุณถูกส่งเรียบร้อยแล้ว!\nชื่อ: ${name}\nอีเมล: ${email}\nข้อความ: ${message}`);
+
+            // ปิดป๊อปอัพและเคลียร์ฟอร์ม
+            contactModal.style.display = 'none';
+            document.getElementById('contact-form').reset();
+        });
+    </script>
+    <script src="local.js"></script>
+</body>
+</html>

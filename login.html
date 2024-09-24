@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ - SnowyRobloxStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SnowyRobloxStore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าหลัก</a></li>
+                <li><a href="register.html">สมัครสมาชิก</a></li>
+                <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li><a href="#">จำนวนเงิน</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="login-section">
+        <h2>เข้าสู่ระบบ</h2>
+        <form id="login-form">
+            <label for="login-username">ชื่อผู้ใช้</label>
+            <input type="text" id="login-username" name="login-username" placeholder="ชื่อผู้ใช้" required>
+
+            <label for="login-password">รหัสผ่าน</label>
+            <input type="password" id="login-password" name="login-password" placeholder="รหัสผ่าน" required>
+
+            <button type="submit">เข้าสู่ระบบ</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 SnowyRobloxStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const loginUsername = document.getElementById('login-username').value;
+            const loginPassword = document.getElementById('login-password').value;
+    
+            // ดึงข้อมูลผู้ใช้ที่สมัครสมาชิกจาก Local Storage
+            const storedUserData = JSON.parse(localStorage.getItem('registeredUser'));
+    
+            // ตรวจสอบว่าชื่อผู้ใช้และรหัสผ่านตรงกับข้อมูลที่เก็บไว้หรือไม่
+            if (storedUserData && storedUserData.username === loginUsername && storedUserData.password === loginPassword) {
+                // เก็บสถานะการล็อกอินใน Local Storage
+                const loggedInUser = {
+                    username: loginUsername
+                };
+                localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    
+                alert('เข้าสู่ระบบสำเร็จ!');
+                // นำผู้ใช้ไปยังหน้าหลัก
+                window.location.href = 'index.html';
+            } else {
+                alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+            }
+        });
+    </script>    
+</body>
+</html>

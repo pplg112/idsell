@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - SnowyRobloxStore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SnowyRobloxStore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าหลัก</a></li>
+                <li><a href="register.html">สมัครสมาชิก</a></li>
+                <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li><a href="#">จำนวนเงิน</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="signup-section">
+        <h2>สมัครสมาชิก</h2>
+        <form id="register-form">
+            <label for="username">ชื่อผู้ใช้</label>
+            <input type="text" id="username" name="username" placeholder="ชื่อผู้ใช้" required>
+
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" name="email" placeholder="อีเมล" required>
+
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" placeholder="รหัสผ่าน" required>
+
+            <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="ยืนยันรหัสผ่าน" required>
+
+            <button type="submit">สมัครสมาชิก</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 SnowyRobloxStore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // ตรวจสอบรหัสผ่านและยืนยันรหัสผ่านว่าตรงกันหรือไม่
+            if (password !== confirmPassword) {
+                alert('รหัสผ่านไม่ตรงกัน กรุณาลองใหม่');
+            } else {
+                // เก็บข้อมูลการสมัครสมาชิกใน Local Storage
+                const userData = {
+                    username: username,
+                    email: email,
+                    password: password
+                };
+                localStorage.setItem('registeredUser', JSON.stringify(userData));
+
+                alert('สมัครสมาชิกสำเร็จ! นำท่านไปยังหน้าล็อกอิน');
+
+                // นำผู้ใช้ไปยังหน้าล็อกอิน
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
