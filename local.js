@@ -78,3 +78,63 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     contactModal.classList.remove('show'); // ลบคลาส show เมื่อปิดป๊อปอัพ
     document.getElementById('contact-form').reset();
 });
+
+// ฟังก์ชันสำหรับการเพิ่มสินค้าลงตะกร้า
+function addToCart(event) {
+    // หยุดการทำงานเริ่มต้นของปุ่ม
+    event.preventDefault();
+
+    // รับข้อมูลสินค้าจากปุ่มที่ถูกคลิก
+    const productId = event.target.getAttribute('data-id');
+    const productName = event.target.getAttribute('data-name');
+    const productPrice = event.target.getAttribute('data-price');
+
+    // สร้างสินค้าเป็น Object
+    const product = {
+        id: productId,
+        name: productName,
+        price: parseFloat(productPrice),
+        quantity: 1
+    };
+
+    // ตรวจสอบว่ามีสินค้าใน Local Storage หรือยัง
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // ตรวจสอบว่าสินค้ามีอยู่ในตะกร้าแล้วหรือไม่
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex !== -1) {
+        // ถ้ามีอยู่แล้ว เพิ่มจำนวนสินค้า
+        cart[existingProductIndex].quantity += 1;
+    } else {
+        // ถ้ายังไม่มี ให้เพิ่มสินค้าใหม่ลงในตะกร้า
+        cart.push(product);
+    }
+
+    // อัพเดตข้อมูลใน Local Storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // อัพเดตการแสดงผลตะกร้า (สามารถเพิ่มฟังก์ชันแสดงผลที่นี่ได้)
+    updateCartUI();
+
+    // แสดงข้อความแจ้งเตือนเมื่อเพิ่มสินค้าลงตะกร้า
+    alert(`${productName} has been added to the cart.`);
+}
+
+// เพิ่ม Event Listener ให้กับปุ่ม "Add to Cart"
+const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+// ฟังก์ชันสำหรับการอัพเดตการแสดงผลตะกร้า
+function updateCartUI() {
+    // ตัวอย่างการแสดงจำนวนสินค้าในตะกร้า
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cart-count').textContent = cartCount;
+}
+
+// เรียกฟังก์ชันนี้เมื่อเริ่มโหลดหน้าเว็บเพื่อแสดงข้อมูลตะกร้าปัจจุบัน
+updateCartUI();
+
