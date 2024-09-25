@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ตะกร้าสินค้า - SnowyRobloxStore</title>
+</head>
+<body>
+    <header>
+        <h1>SnowyRobloxStore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าหลัก</a></li>
+                <li><a href="profile.html">โปรไฟล์</a></li>
+                <li><a href="cart.html">ตะกร้า (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
+                <li><a href="logout.html">ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2>ตะกร้าสินค้า</h2>
+        <div id="cart-items"></div> <!-- ที่จะแสดงรายการสินค้าที่อยู่ในตะกร้า -->
+        <div id="total-amount">
+            <h3>ยอดรวม: <span id="total-price">0</span> Robux</h3>
+        </div>
+        <button id="checkout-button">สั่งซื้อ</button>
+        <button id="clear-cart-button">ลบสินค้าทั้งหมด</button> <!-- ปุ่มลบสินค้าทั้งหมดในตะกร้า -->
+    </section>
+
+    <script src="cart.js"></script> <!-- สคริปต์จัดการตะกร้าสินค้า -->
+</body>
+</html>
