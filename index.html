@@ -8,9 +8,11 @@
 </head>
 <body>
     <header>
+        <div class="logo">
         <h1>SnowyRobloxStore</h1>
+        </div>
         <nav>
-            <ul id="nav-items">
+            <ul>
                 <li><a href="index.html">หน้าหลัก</a></li>
                 <li id="register-nav"><a href="register.html">สมัครสมาชิก</a></li>
                 <li id="login-nav"><a href="login.html">เข้าสู่ระบบ</a></li>
@@ -28,6 +30,7 @@
                 <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
                 <li><a href="cart.html">ตะกร้า (<span id="cart-count">0</span>)</a></li> <!-- แสดงจำนวนสินค้าในตะกร้า -->
             </ul>
+            <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
         </nav>
     </header>
 
@@ -174,5 +177,6 @@
     </script>
     <script src="local.js"></script>
     <script src="cart.js"></script> <!-- ลิงก์ไปยังไฟล์ JavaScript สำหรับจัดการตะกร้า -->
+    <script src="script.js"></script>
 </body>
 </html>

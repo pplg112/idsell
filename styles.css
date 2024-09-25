@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8; /* สีพื้นหลังน้ำเงินอ่อน */
+    background-color: #f0f0f5; /* สีพื้นหลังน้ำเงินอ่อน */
     color: #333;
     transition: background-color 0.5s ease;
 }
@@ -15,49 +15,72 @@ h1, h2 {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
     width: 100%;
-    padding: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #333; /* สีพื้นหลังเข้ม */
+    color: #fff; /* สีตัวอักษรขาว */
+    display: flex;
+    justify-content: space-between; /* เว้นระยะห่างระหว่างโลโก้และเมนู */
+    align-items: center;
+    padding: 10px 20px;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 0; /* ติดไว้ที่ด้านบน */
+    z-index: 1000; /* ความสำคัญของเลเยอร์ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงาเพื่อความสวยงาม */
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 1.8em;
     margin: 0;
 }
 
+header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
 nav {
-    background-color: #004d40; /* สีพื้นหลังของ navigation */
-    padding: 15px;
+    background-color: #333; /* สีพื้นหลังของ navigation */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    list-style: none; /* ยกเลิกลิสต์สไตล์ */
+    display: flex; /* แสดงแบบยืดหยุ่น */
+    gap: 20px; /* เว้นระยะห่างระหว่างเมนู */
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 10px;
+    position: relative; /* สำหรับทำลูกเล่นเพิ่มเติม */
 }
 
 nav ul li a {
     color: #ffffff; /* สีตัวอักษรใน navigation */
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease; /* เอฟเฟกต์การเปลี่ยนสีเมื่อ hover */
+    text-decoration: none; /* ยกเลิกขีดเส้นใต้ */
+    font-weight: bold; /* ข้อความหนา */
+    padding: 10px 15px; /* ระยะห่างด้านใน */
+    transition: color 0.3s ease, background-color 0.3s ease; /* เอฟเฟกต์การเปลี่ยนสีและพื้นหลัง */
 }
 
 nav ul li a:hover {
-    color: #a7ffeb; /* สีเมื่อ hover */
-    background: rgba(255, 255, 255, 0.2); /* สีพื้นหลังเมื่อชี้ */
-    transform: scale(1.1); /* ขยายขนาด */
+    color: #333; /* สีตัวอักษรเมื่อ hover */
+    background: #ffffff; /* สีพื้นหลังเมื่อชี้ */
+    border-radius: 5px; /* มุมโค้งมน */
+}
+
+nav ul li a:after {
+    content: ''; /* สร้าง pseudo-element */
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s; /* การขยายความยาว */
+}
+
+nav ul li a:hover:after {
+    width: 100%; /* ความยาวเต็ม */
 }
 
 .main-content {
@@ -144,11 +167,6 @@ footer {
     width: 100%;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* ตั้งค่าหน้าสมัครสมาชิก */
 .signup-section {
     background-color: #e0f7fa;
@@ -161,7 +179,7 @@ footer {
     color: #006064;
 }
 
-form {
+.signup-form {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -172,14 +190,14 @@ form {
     text-align: left;
 }
 
-form label {
+.signup-form label {
     display: block;
     font-size: 1.1em;
     margin-bottom: 8px;
     color: #00796b;
 }
 
-form input {
+.signup-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -187,7 +205,7 @@ form input {
     border-radius: 5px;
 }
 
-form button {
+.signup-form button {
     background-color: #0097a7;
     color: #fff;
     padding: 10px 20px;
@@ -198,9 +216,10 @@ form button {
     width: 100%;
 }
 
-form button:hover {
+.signup-form button:hover {
     background-color: #00796b;
 }
+
 /* ตั้งค่าหน้าล็อกอิน */
 .login-section {
     background-color: #e0f7fa;
@@ -213,7 +232,7 @@ form button:hover {
     color: #006064;
 }
 
-form {
+.login-form {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -224,14 +243,14 @@ form {
     text-align: left;
 }
 
-form label {
+.login-form label {
     display: block;
     font-size: 1.1em;
     margin-bottom: 8px;
     color: #00796b;
 }
 
-form input {
+.login-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -239,7 +258,7 @@ form input {
     border-radius: 5px;
 }
 
-form button {
+.login-form button {
     background-color: #0097a7;
     color: #fff;
     padding: 10px 20px;
@@ -250,9 +269,10 @@ form button {
     width: 100%;
 }
 
-form button:hover {
+.login-form button:hover {
     background-color: #00796b;
 }
+
 /* ไอคอนโปรไฟล์และปุ่มออกจากระบบ */
 #profile-link img {
     vertical-align: middle;
@@ -429,7 +449,7 @@ button:hover {
        width: 100%;
        margin: 20px auto;
        animation: fadeIn 1s ease-out;
-    }
+}
 
 @keyframes fadeIn {
     0% { opacity: 0; transform: scale(0.9); }
@@ -586,35 +606,60 @@ button:hover {
     cursor: pointer;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    #cart-items {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    #checkout-button, #clear-cart-button {
-        width: 100%;
-    }
+.hamburger-menu {
+    display: none; /* ซ่อนไว้ก่อน */
+    font-size: 24px; /* ขนาดตัวอักษร */
+    cursor: pointer; /* เปลี่ยนเป็นมือชี้ */
 }
 
-@media (max-width: 480px) {
+/* การตั้งค่าเมนูแสดงที่ขนาดหน้าจอเล็ก */
+@media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
+        display: none; /* ซ่อนไว้ก่อน */
+        flex-direction: column; /* จัดเรียงแนวตั้ง */
+        width: 100%;
+        background-color: #333;
+        position: absolute; /* วางตำแหน่งแบบสัมพัทธ์ */
+        top: 60px; /* เลื่อนลงมา */
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     nav ul li {
-        padding: 8px;
+        width: 100%; /* ขนาดเต็ม */
     }
 
     nav ul li a {
-        font-size: 14px;
+        display: block; /* จัดเรียงแบบบล็อค */
+        padding: 15px 20px; /* ขยายขนาด padding */
+        border-bottom: 1px solid #555; /* เส้นขอบล่าง */
     }
 
-    header h1 {
-        font-size: 1.5rem;
+    nav ul li a:hover {
+        background: #555; /* เปลี่ยนสีเมื่อ hover */
     }
+
+    .hamburger-menu {
+        display: block; /* แสดงเมนูสำหรับมือถือ */
+    }
+
+    nav ul.active {
+        display: flex; /* แสดงเมนูเมื่อ active */
+    }
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.navbar-scroll {
+    background-color: #555 !important; /* เปลี่ยนสีพื้นหลังเมื่อเลื่อน */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงา */
+    transition: background-color 0.3s ease; /* การเปลี่ยนแปลงสีพื้นหลัง */
 }
