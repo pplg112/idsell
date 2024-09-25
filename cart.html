@@ -8,15 +8,29 @@
 </head>
 <body>
     <header>
+        <div class="logo">
         <h1>SnowyRobloxStore</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">หน้าหลัก</a></li>
-                <li><a href="profile.html">โปรไฟล์</a></li>
-                <li><a href="cart.html">ตะกร้า (<span id="cart-count">0</span>)</a></li>
+                <li id="register-nav"><a href="register.html">สมัครสมาชิก</a></li>
+                <li id="login-nav"><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li id="profile-nav" style="display:none;">
+                    <a href="#" id="profile-link">
+                        <img id="profile-icon" src="default-profile.png" alt="โปรไฟล์" width="30" height="30">
+                        <span id="username-display"></span>
+                    </a>
+                    <input type="file" id="profile-pic-input" accept="image/*" style="display:none;">
+                </li>
+                <li id="logout-nav" style="display:none;"><a href="#" id="logout-link">ออกจากระบบ</a></li>
+                <li id="balance-nav" style="display:none;">เงินคงเหลือ: <span id="balance-display">0</span> บาท</li>
+                <li id="recharge-nav" style="display:none;"><a href="topup.html" id="recharge-link">เติมเงิน</a></li>
+                <li id="category-nav" style="display:none;"><a href="category.html">หมวดหมู่ไอดีเกม</a></li>
                 <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
-                <li><a href="logout.html">ออกจากระบบ</a></li>
+                <li><a href="cart.html">ตะกร้า (<span id="cart-count">0</span>)</a></li> <!-- แสดงจำนวนสินค้าในตะกร้า -->
             </ul>
+            <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
         </nav>
     </header>
 
