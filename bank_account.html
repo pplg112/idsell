@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>กรอกข้อมูลบัญชีธนาคาร</title>
+</head>
+<body>
+    <header>
+        <h1>กรอกข้อมูลบัญชีธนาคาร</h1>
+    </header>
+    
+    <div class="container">
+        <form id="bank-account-form">
+            <label for="bank-name">ชื่อธนาคาร:</label>
+            <select id="bank-name" required>
+                <option value="">เลือกธนาคาร</option>
+                <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+                <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
+                <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+                <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
+                <option value="ธนาคารทหารไทย">ธนาคารทหารไทย</option>
+            </select>
+
+            <label for="account-number">หมายเลขบัญชี:</label>
+            <input type="text" id="account-number" placeholder="กรอกหมายเลขบัญชี" required>
+
+            <button type="submit">บันทึกข้อมูล</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('bank-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+
+            // ดึงข้อมูลจากฟอร์ม
+            const bankName = document.getElementById('bank-name').value;
+            const accountNumber = document.getElementById('account-number').value;
+
+            // บันทึกข้อมูลลง localStorage
+            localStorage.setItem('bankAccount', JSON.stringify({
+                bankName: bankName,
+                accountNumber: accountNumber
+            }));
+
+            // เปลี่ยนไปยังหน้า profile.html
+            window.location.href = 'profile.html';
+        });
+    </script>
+</body>
+</html>

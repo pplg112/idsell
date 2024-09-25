@@ -41,3 +41,11 @@ document.getElementById('topup-form').addEventListener('submit', function(event)
         document.getElementById('message').innerText = 'เกิดข้อผิดพลาดในการเติมเงิน!';
     });
 });
+
+const stripe = Stripe('pk_test_51Q2acSK8OE9M2oHfOsHkRvItPqRghohzuVVDSdqX0gRlSig7Jc9uTcsw5KlOMOoH9jAft3k4eTmXMSrEgkrbdk3100DzGscCyS');
+
+const appearance = { /* appearance */ };
+const options = { /* options */ };
+const elements = stripe.elements({ clientSecret, appearance });
+const paymentElement = elements.create('payment', options);
+paymentElement.mount('#payment-element');

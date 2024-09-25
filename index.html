@@ -22,10 +22,11 @@
                     <input type="file" id="profile-pic-input" accept="image/*" style="display:none;">
                 </li>
                 <li id="logout-nav" style="display:none;"><a href="#" id="logout-link">ออกจากระบบ</a></li>
-                <li id="balance-nav" style="display:none;">เงินคงเหลือ: <span id="balance-display">0</span> Robux</li>
+                <li id="balance-nav" style="display:none;">เงินคงเหลือ: <span id="balance-display">0</span> บาท</li>
                 <li id="recharge-nav" style="display:none;"><a href="topup.html" id="recharge-link">เติมเงิน</a></li>
                 <li id="category-nav" style="display:none;"><a href="category.html">หมวดหมู่ไอดีเกม</a></li>
                 <li><a href="#" id="contact-support">ติดต่อทีมงาน</a></li>
+                <li><a href="cart.html">ตะกร้า (<span id="cart-count">0</span>)</a></li> <!-- แสดงจำนวนสินค้าในตะกร้า -->
             </ul>
         </nav>
     </header>
@@ -33,6 +34,33 @@
     <section>
         <h2>ยินดีต้อนรับสู่ SnowyRobloxStore</h2>
         <p>เว็บขายไอดีเกม Roblox ที่ดีที่สุด!</p>
+        <div class="game-grid">
+            <div class="game-item">
+                <img src="game1.jpg" alt="เกม 1">
+                <h3>ชื่อเกม 1</h3>
+                <p>ราคา: 100 Robux</p>
+                <button>ซื้อ</button>
+            </div>
+            <div class="game-item">
+                <img src="game2.jpg" alt="เกม 2">
+                <h3>ชื่อเกม 2</h3>
+                <p>ราคา: 150 Robux</p>
+                <button>ซื้อ</button>
+            </div>
+            <div class="game-item">
+                <img src="game3.jpg" alt="เกม 3">
+                <h3>ชื่อเกม 3</h3>
+                <p>ราคา: 200 Robux</p>
+                <button>ซื้อ</button>
+            </div>
+            <div class="game-item">
+                <img src="game4.jpg" alt="เกม 4">
+                <h3>ชื่อเกม 4</h3>
+                <p>ราคา: 250 Robux</p>
+                <button>ซื้อ</button>
+            </div>
+            <!-- เพิ่มไอดีเกมเพิ่มเติมได้ที่นี่ -->
+        </div>
     </section>
 
     <!-- ป๊อปอัพสำหรับติดต่อทีมงาน -->
@@ -145,5 +173,6 @@
         });
     </script>
     <script src="local.js"></script>
+    <script src="cart.js"></script> <!-- ลิงก์ไปยังไฟล์ JavaScript สำหรับจัดการตะกร้า -->
 </body>
 </html>

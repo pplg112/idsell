@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>โปรไฟล์ผู้ใช้</title>
+</head>
+<body>
+    <header>
+        <h1>โปรไฟล์ผู้ใช้</h1>
+    </header>
+
+    <div class="container profile-container">
+        <div class="profile-header">
+            <img id="profile-icon" src="default-profile.png" alt="โปรไฟล์">
+            <h2 id="username-display"></h2>
+        </div>
+
+        <div class="user-details">
+            <h3>ข้อมูลบัญชีธนาคาร</h3>
+            <p id="bank-name-display"></p>
+            <p id="account-number-display"></p>
+        </div>
+
+        <button class="edit-button" onclick="window.location.href='bank_account.html'">แก้ไขข้อมูลบัญชี</button>
+    </div>
+
+    <script>
+        // โหลดข้อมูลผู้ใช้จาก localStorage
+        const storedUserData = JSON.parse(localStorage.getItem('registeredUser'));
+        const storedBankAccount = JSON.parse(localStorage.getItem('bankAccount'));
+
+        // แสดงชื่อผู้ใช้
+        if (storedUserData) {
+            document.getElementById('username-display').textContent = storedUserData.username;
+        }
+
+        // แสดงข้อมูลบัญชีธนาคาร
+        if (storedBankAccount) {
+            document.getElementById('bank-name-display').textContent = `ชื่อธนาคาร: ${storedBankAccount.bankName}`;
+            document.getElementById('account-number-display').textContent = `หมายเลขบัญชี: ${storedBankAccount.accountNumber}`;
+        } else {
+            document.getElementById('bank-name-display').textContent = 'ยังไม่มีข้อมูลบัญชีธนาคาร';
+            document.getElementById('account-number-display').textContent = '';
+        }
+    </script>
+</body>
+</html>

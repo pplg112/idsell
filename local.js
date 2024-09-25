@@ -78,31 +78,3 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     contactModal.classList.remove('show'); // ลบคลาส show เมื่อปิดป๊อปอัพ
     document.getElementById('contact-form').reset();
 });
-// ฟังก์ชันเติมเงิน
-document.getElementById('top-up-form').addEventListener('submit', async function(event) {
-    event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
-    const amount = document.getElementById('amount').value;
-    
-    // เรียกใช้งาน Stripe API เพื่อสร้าง Payment Intent
-    const response = await fetch('/create-payment-intent', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amount: amount * 100 }) // แปลงเป็นหน่วยเซนต์
-    });
-    
-    const data = await response.json();
-    
-    // ตรวจสอบสถานะการสร้าง Payment Intent
-    if (data.error) {
-        alert('เกิดข้อผิดพลาด: ' + data.error);
-    } else {
-        // ทำการชำระเงินที่นี่ (ขึ้นอยู่กับวิธีที่เลือก เช่น Stripe.js)
-        alert('เติมเงินสำเร็จ! จำนวนเงิน: ' + amount + ' บาท');
-        // เพิ่มเงินเข้าบัญชีผู้ใช้ (ใน Local Storage หรือฐานข้อมูล)
-        let currentBalance = parseInt(localStorage.getItem('balance')) || 0;
-        localStorage.setItem('balance', currentBalance + parseInt(amount));
-        document.getElementById('current-balance').innerText = `จำนวนเงินที่เหลือ: ${currentBalance + parseInt(amount)} บาท`;
-    }
-});
